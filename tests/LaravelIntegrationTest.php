@@ -4,7 +4,7 @@ namespace Dingo\Blueprint {
 
     use Illuminate\Support\Collection;
     use Illuminate\Filesystem\Filesystem;
-    use Doctrine\Common\Annotations\AnnotationReader;
+    use Doctrine\Common\Annotations\DocParser;
     use PHPUnit\Framework\TestCase;
 
     class LaravelIntegrationTest extends TestCase
@@ -23,7 +23,7 @@ EOT;
         {
             $resources = new Collection([new Tests\Stubs\ActivityController]);
 
-            $blueprint = new Blueprint(new AnnotationReader, new Filesystem);
+            $blueprint = new Blueprint(new DocParser, new Filesystem);
 
             $this->assertEquals(trim($this->simpleExample), $blueprint->generate($resources, 'testing', 'v1', null));
         }
@@ -32,7 +32,7 @@ EOT;
         {
             $resources = new Collection([new Tests\Stubs\ActivityController]);
 
-            $blueprint = new Blueprint(new AnnotationReader, new Filesystem);
+            $blueprint = new Blueprint(new DocParser, new Filesystem);
 
             $this->assertEquals(trim($this->simpleExample), $blueprint->generate($resources, 'testing', 'v1', null));
         }

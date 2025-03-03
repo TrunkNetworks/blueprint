@@ -11,7 +11,7 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Collection;
 use Illuminate\Filesystem\Filesystem;
 use Doctrine\Common\Annotations\AnnotationRegistry;
-use Doctrine\Common\Annotations\AnnotationReader;
+use Doctrine\Common\Annotations\DocParser;
 
 class Blueprint
 {
@@ -24,7 +24,7 @@ class Blueprint
     /**
      * Simple annotation reader instance.
      *
-     * @var \Doctrine\Common\Annotations\AnnotationReader
+     * @var \Doctrine\Common\Annotations\DocParser
      */
     protected $reader;
 
@@ -45,12 +45,12 @@ class Blueprint
     /**
      * Create a new generator instance.
      *
-     * @param \Doctrine\Common\Annotations\AnnotationReader $reader
+     * @param \Doctrine\Common\Annotations\DocParser $reader
      * @param \Illuminate\Filesystem\Filesystem                   $files
      *
      * @return void
      */
-    public function __construct(AnnotationReader $reader, Filesystem $files)
+    public function __construct(DocParser $reader, Filesystem $files)
     {
         $this->reader = $reader;
         $this->files = $files;
